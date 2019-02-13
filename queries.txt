@@ -1,0 +1,93 @@
+QUERIES
+SELECT Customer_phonenumber
+FROM Customer
+WHERE Customer_city=’San Diego’;
+
+
+SELECT * 
+FROM Transactions
+WHERE Total < 50.00;
+
+
+SELECT * 
+FROM Store
+WHERE Store_Name LIKE ‘A%’;
+
+SELECT Customer_name, Payment_type
+FROM Customer, Transactions
+Where Customers.CustomerID = Transactions.CustomerID
+ 
+
+SELECT * 
+FROM Customer
+WHERE Customer_state=’CA’ 
+      AND Customer_City=’San Francisco’;
+ 
+
+SELECT * 
+FROM Customer
+WHERE Customer_city='Sacramento' 
+      OR Customer_city='San Diego';
+ 
+
+SELECT * 
+FROM Store
+WHERE NOT Store_City=’San Francisco’;
+ 
+
+SELECT * 
+FROM Transactions
+ORDER BY Total;
+ 
+
+SELECT Transactions.TransactionID, Customer.CustomerFName
+FROM Transactions
+INNER JOIN Customer ON Transactions.CustomerID = Customer.CustomerID;
+
+SELECT Customer.Customer_firstname, Transactions.TransactionID
+FROM Customer
+LEFT JOIN Transactions ON Customer.CustomerID = Transactions.TransactionID
+ORDER BY Customers.Customer_firstname
+
+SELECT Employee_LastName, Employee_FirstName, Employee_Position
+FROM Employee
+WHERE Employee_Position ='Cashier'; 
+
+SELECT MIN(Unit_cost) AS SmallestUnit
+FROM Product;
+
+SELECT AVG(Total)
+FROM Transactions;
+
+SELECT COUNT(Barcode)
+FROM Product;
+
+SELECT SUM(Subtotal)
+FROM Transactions;
+
+SELECT COUNT(CustomerID), Customer_city
+FROM Customers
+GROUP BY Customer_city
+ORDER BY COUNT(CustomerID) DESC;
+
+SELECT Store_Name
+FROM Store
+WHERE EXISTS (
+      SELECT Employee_Position 
+      FROM Employee 
+      WHERE StoreID = Store.StoreID AND Sex = ‘M’)
+      );
+ 
+
+SELECT Customer_firstname, Customer_lastname
+FROM Customer
+WHERE NOT EXISTS (
+      SELECT *
+      FROM Transactions
+      WHERE NOT(Payment_type = 'cash')
+      );
+      
+
+SELECT Discount
+FROM Transactions
+WHERE Discount IS NOT NULL
