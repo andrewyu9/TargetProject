@@ -1,7 +1,8 @@
 QUERIES
+
 SELECT Customer_phonenumber
 FROM Customer
-WHERE Customer_city=’San Diego’;
+WHERE Customer_city=â€™San Diegoâ€™;
 
 
 SELECT * 
@@ -11,7 +12,7 @@ WHERE Total < 50.00;
 
 SELECT * 
 FROM Store
-WHERE Store_Name LIKE ‘A%’;
+WHERE Store_Name LIKE â€˜A%â€™;
 
 SELECT Customer_name, Payment_type
 FROM Customer, Transactions
@@ -20,8 +21,8 @@ Where Customers.CustomerID = Transactions.CustomerID
 
 SELECT * 
 FROM Customer
-WHERE Customer_state=’CA’ 
-      AND Customer_City=’San Francisco’;
+WHERE Customer_state=â€™CAâ€™ 
+      AND Customer_City=â€™San Franciscoâ€™;
  
 
 SELECT * 
@@ -32,7 +33,7 @@ WHERE Customer_city='Sacramento'
 
 SELECT * 
 FROM Store
-WHERE NOT Store_City=’San Francisco’;
+WHERE NOT Store_City=â€™San Franciscoâ€™;
  
 
 SELECT * 
@@ -75,7 +76,7 @@ FROM Store
 WHERE EXISTS (
       SELECT Employee_Position 
       FROM Employee 
-      WHERE StoreID = Store.StoreID AND Sex = ‘M’)
+      WHERE StoreID = Store.StoreID AND Sex = â€˜Mâ€™)
       );
  
 
